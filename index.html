@@ -4,16 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Greeting Card</title>
+    <!-- Include Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient( #f06292, #81d4fa); /* Trendy gradient */
             overflow: hidden;
+            background: linear-gradient(45deg, #f78ca0, #f0a6e8, #81d4fa);
+            background-size: 300% 300%;
+            animation: gradientShift 8s infinite;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .container {
@@ -26,35 +42,34 @@
 
         .container img {
             width: 100%;
-            max-width: 35vw; /* Adjust for Gen Z style */
-            max-height: 70vh; /* Adjust for viewport height */
+            max-width: 35vw;
+            max-height: 70vh;
             object-fit: cover;
-            border-radius: 15px; /* Rounded corners for a sleek look */
+            border-radius: 15px;
             opacity: 0;
-            animation: fadeIn 2s ease-in-out forwards;
+            animation: zoomIn 2s ease-out forwards;
         }
 
-        /* Staggered animation delay */
         .container img:nth-child(1) {
-            animation-delay: 1s;
+            animation-delay: 4s;
         }
 
         .container img:nth-child(2) {
-            animation-delay: 1.5s;
+            animation-delay: 4.5s;
         }
 
         .container img:nth-child(3) {
-            animation-delay: 2s;
+            animation-delay: 5s;
         }
 
-        @keyframes fadeIn {
+        @keyframes zoomIn {
             0% {
+                transform: scale(0.8);
                 opacity: 0;
-                transform: translateY(20px);
             }
             100% {
+                transform: scale(1);
                 opacity: 1;
-                transform: translateY(0);
             }
         }
 
@@ -65,15 +80,21 @@
             z-index: 2;
             padding: 0 20px;
             max-width: 90%;
+            opacity: 1;
+            animation: typing 3s steps(30, end), fadeOut 1s ease-out 3s forwards;
         }
 
         .content h1 {
             font-size: 4em;
             font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 5px;
+            text-transform: none;
+            letter-spacing: 2px;
             margin: 0;
             text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+            font-family: 'Dancing Script', cursive;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid #fff;
         }
 
         .content p {
@@ -81,6 +102,24 @@
             margin: 20px 0;
             text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
             line-height: 1.5;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
         }
 
         .footer {
@@ -91,6 +130,20 @@
             font-size: 1.2em;
             z-index: 3;
             text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            animation: slideUp 2s ease-in-out forwards;
+            animation-delay: 5s;
+        }
+
+        @keyframes slideUp {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         /* Responsive design for smaller screens */
@@ -111,6 +164,11 @@
     </style>
 </head>
 <body>
+    <div class="content">
+        <h1>Wedding Day!</h1>
+        <p>Wishing You a Lifetime of Love and Happiness,<br>Cheers to the Beautiful Couple!</p>
+    </div>
+
     <div class="container">
         <!-- Left Image -->
         <img src= "Tamanna apu 2.jpg" alt="Left Image">
@@ -118,11 +176,6 @@
         <img src= "Tamanna apu.jpg" alt="Center Image">
         <!-- Right Image -->
         <img src= "Tamanna apu 3.jpg" alt="Right Image">
-    </div>
-
-    <div class="content">
-        <h1>Wedding Day!</h1>
-        <p>Wishing You a Lifetime of Love and Happiness,<br>Cheers to the Beautiful Couple!</p>
     </div>
 
     <div class="footer">
